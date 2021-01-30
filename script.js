@@ -1,31 +1,31 @@
 
 //Main Function
 
-function handleTicketChanges(ticket,isIncrease) {
-    const ticketCount = getInputValue(ticket)
-    let ticketNewCount = ticketCount;
-    if (isIncrease == true) {
-       ticketNewCount = ticketCount + 1;
-    }
-    if (isIncrease == false && ticketCount > 0) {
-       ticketNewCount = ticketCount - 1;
-    }
-    document.getElementById(ticket + 'Quantity').value = ticketNewCount;
-    // const economyPrice = ticketNewCount * 100;
-    let ticketTotal = 0;
-    if (ticket == 'fClass') {
-       ticketTotal = ticketNewCount * 150;
-    }
-    if (ticket == 'economy') {
-       ticketTotal = ticketNewCount * 100;
-    }
-    document.getElementById(ticket + 'Total').innerText = ticketTotal;
-    calculateTotal();
- }
+function handleTicketChanges(ticket, isIncrease) {
+   const ticketCount = getInputValue(ticket)
+   let ticketNewCount = ticketCount;
+   if (isIncrease == true) {
+      ticketNewCount = ticketCount + 1;
+   }
+   if (isIncrease == false && ticketCount > 0) {
+      ticketNewCount = ticketCount - 1;
+   }
+   document.getElementById(ticket + 'Quantity').value = ticketNewCount;
+   // const economyPrice = ticketNewCount * 100;
+   let ticketTotal = 0;
+   if (ticket == 'fClass') {
+      ticketTotal = ticketNewCount * 150;
+   }
+   if (ticket == 'economy') {
+      ticketTotal = ticketNewCount * 100;
+   }
+   document.getElementById(ticket + 'Total').innerText = ticketTotal;
+   calculateTotal();
+}
 
- //Calculation part
+//Calculation part
 
- function calculateTotal() {
+function calculateTotal() {
    const fClassCount = getInputValue('fClass')
    const economyCount = getInputValue('economy')
    // const fClassInput = document.getElementById('fClassQuantity');
@@ -54,24 +54,20 @@ function getInputValue(ticket) {
 
 
 const checkout = document.getElementById('booking');
- const bookingCompletionPage = document.getElementById('bookingCompletionPage');
- bookingCompletionPage.style.display = "none";
- checkout.addEventListener('click', function () {
-    const booking = document.getElementById('bookingContent');
-    booking.style.display = "none";
-    bookingCompletionPage.style.display = "block";
-    if( document.getElementById('totalAmount').innerText == 0){
+const bookingCompletionPage = document.getElementById('bookingCompletionPage');
+bookingCompletionPage.style.display = "none";
+checkout.addEventListener('click', function () {
+   const booking = document.getElementById('bookingContent');
+   booking.style.display = "none";
+   bookingCompletionPage.style.display = "block";
+   if (document.getElementById('totalAmount').innerText == 0) {
       alert("Ticket need to be booked");
       booking.style.display = "block";
+      const bookingCompletionPage = document.getElementById('bookingCompletionPage');
+      bookingCompletionPage.style.display = "none";
    }
- })
+})
 
- function confirmFunction() {
-    if(document.getElementById('booked').value == 0){
-      alert("Information Must be Given");
-    }
-    else{
-      confirm("Booking Confirmed!");
-    }
-   
- }
+function confirmFunction() {
+     confirm("Booking Confirmed!");
+}
